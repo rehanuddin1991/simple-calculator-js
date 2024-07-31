@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet"> 
+
+    <style>
+        *{margin:0;padding: 0px;}
+        #container
+        {
+            display: grid;
+            max-width: 300px;
+            min-height: 400px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: repeat(6,50px);
+            text-align: center;
+            gap:5px;
+            margin:0 auto;
+              margin-top: 20px;
+             
+        }
+        .result
+        {
+            grid-column: 1/5;
+            border:2px solid darkcyan;
+            line-height: 50px;
+
+        }
+        button{
+            border-radius: 4px;color:whitesmoke;
+            font-size: 22px;
+            background-color: darkcyan;
+            padding: 7px;
+            cursor: pointer;
+        }
+        .open-sans-normal2 {
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+        }
+         
+        button:hover
+        {
+            background-color: brown;color:whitesmoke;
+        }
+        
+    </style>
+</head>
+
+<body class="open-sans-normal2">
+    <div id="container">
+        <div id="result" class="result">0</div>
+        <button>C</button>
+        <button>CE</button>
+        <button>%</button>
+        <button>&nbsp;</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>+</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>*</button>
+        <button>0</button>
+        <button>.</button>
+        <button>/</button>
+        <button>=</button>
+    </div>
+<script>
+    const container_div=document.getElementById("container");
+    const result=document.getElementById("result");
+     
+
+    container_div.addEventListener("click",(e)=>{
+        
+        if(e.target.matches("button"))
+    {
+        //e.target.style.backgroundColor="red";
+       //console.log(document.getElementById("result").innerText);
+       if(e.target.innerText=="="  ) 
+       {
+        try
+        {
+            result.innerText=eval(result.innerText);
+        }
+        catch(error) {result.innerText="error";}
+         
+       }
+
+       else if(e.target.innerText=="C" || e.target.innerText=="CE" )result.innerText='';
+       else 
+        result.innerText  +=e.target.innerText ;
+    }
+    });
+</script>
+</body>
+
+</html>
